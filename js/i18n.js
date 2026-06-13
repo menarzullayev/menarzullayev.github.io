@@ -22,6 +22,7 @@ export const STRINGS = {
     'noResults.body': 'Try a different search term or clear the filters.',
     'noResults.clear': 'Clear filters',
     'footer.text': '© 2026 Saidakbar Narzullayev',
+    'footer.atlas': 'Living Systems Atlas',
     'results': 'projects',
   },
   uz: {
@@ -47,6 +48,7 @@ export const STRINGS = {
     'noResults.body': 'Boshqa so‘z bilan qidiring yoki filtrlarni tozalang.',
     'noResults.clear': 'Filtrlarni tozalash',
     'footer.text': '© 2026 Saidakbar Narzullayev',
+    'footer.atlas': 'Tirik tizimlar atlasi',
     'results': 'loyiha',
   },
   ru: {
@@ -72,6 +74,7 @@ export const STRINGS = {
     'noResults.body': 'Попробуйте другой запрос или сбросьте фильтры.',
     'noResults.clear': 'Сбросить фильтры',
     'footer.text': '© 2026 Saidakbar Narzullayev',
+    'footer.atlas': 'Атлас живых систем',
     'results': 'проектов',
   },
 };
