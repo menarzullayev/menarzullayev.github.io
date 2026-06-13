@@ -1,42 +1,39 @@
 # menarzullayev.github.io
 
-Premium portfolio hub for ~100 interactive demos.
+Premium portfolio hub — catalog for ~100 interactive demos.
 
 **Live:** https://menarzullayev.github.io
 
-## Workflow
+## Ecosystem (separate repos)
 
-1. Build demo locally and test
-2. Create `demo-project-name` repo and enable GitHub Pages
-3. Add entry to `projects.json`:
+| Repo | Role |
+|------|------|
+| **menarzullayev.github.io** | Portfolio catalog hub (this repo) |
+| **living-systems-atlas** | Lab OS vision — standalone experience |
+| **experience-bible** | Design documentation — reference only |
+
+## Add a demo
 
 ```json
 {
   "id": "3d-rotate-text",
   "title": "3D Rotate Text",
-  "description": "CSS 3D rotating Coming Soon text with mouse interaction.",
   "category": "Animation",
   "tags": ["CSS", "3D", "JavaScript"],
   "status": "live",
+  "description": {
+    "en": "CSS 3D rotating text with mouse interaction.",
+    "uz": "Sichqoncha bilan CSS 3D aylanuvchi matn.",
+    "ru": "CSS 3D вращающийся текст с мышью."
+  },
   "demo": "https://menarzullayev.github.io/demo-3d-rotate-text/",
   "repo": "https://github.com/menarzullayev/demo-3d-rotate-text"
 }
 ```
 
-4. Push hub repo — catalog updates automatically
-
-## Features
-
-- EN / UZ / RU language switch
-- Dark / Light theme toggle
-- Search + category + tag filters
-- Particle background
-- Empty state ready for gradual publishing
-
 ## Local preview
 
 ```bash
-cd menarzullayev.github.io
 python3 -m http.server 8020
 ```
 

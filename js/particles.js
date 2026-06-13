@@ -1,55 +1,72 @@
-export function initParticles() {
+export function initParticles(themeGetter) {
   const canvas = document.getElementById('particles');
   if (!canvas) return () => {};
   const ctx = canvas.getContext('2d');
-  let width = 0;
-  let height = 0;
-  let animationId = 0;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const dots = [];
+  let w = 0;
+  let h = 0;
+  let raf = 0;
+  const count = 64;
+  const parts = [];
 
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  }
-
-  function seed() {
-    dots.length = 0;
-    const count = Math.min(120, Math.floor((width * height) / 18000));
+  const init = () => {
+    parts.length = 0;
     for (let i = 0; i < count; i += 1) {
-      dots.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 1.6 + 0.4,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
+      parts.push({
+        x: Math.random(),
+        y: Math.random(),
+        r: 0.6 + Math.random() * 1.7,
+        vx: (Math.random() - 0.5) * 0.00018,
+        vy: (Math.random() - 0.5) * 0.00018,
+        a: 0.06 + Math.random() * 0.18,
+        cyan: Math.random() < 0.4,
       });
     }
-  }
+  };
 
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00ffe1';
-    dots.forEach((d) => {
-      d.x += d.vx;
-      d.y += d.vy;
-      if (d.x < 0 || d.x > width) d.vx *= -1;
-      if (d.y < 0 || d.y > height) d.vy *= -1;
+  const resize = () => {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+
+  const draw = () => {
+    ctx.clearRect(0, 0, w, h);
+    const dark = themeGetter() === 'dark';
+    for (const p of parts) {
+      if (!reduced) {
+        p.x += p.vx;
+        p.y += p.vy;
+      }
+      if (p.x < -0.02) p.x = 1.02;
+      if (p.x > 1.02) p.x = -0.02;
+      if (p.y < -0.02) p.y = 1.02;
+      if (p.y > 1.02) p.y = -0.02;
       ctx.beginPath();
-      ctx.fillStyle = accent;
-      ctx.globalAlpha = 0.45;
-      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.arc(p.x * w, p.y * h, p.r, 0, Math.PI * 2);
+      if (dark) {
+        ctx.fillStyle = p.cyan
+          ? `rgba(0,255,225,${p.a})`
+          : `rgba(200,224,240,${p.a * 0.7})`;
+      } else {
+        ctx.fillStyle = p.cyan
+          ? `rgba(11,160,141,${p.a * 0.9})`
+          : `rgba(40,70,100,${p.a * 0.6})`;
+      }
       ctx.fill();
-    });
-    ctx.globalAlpha = 1;
-    if (!reduced) animationId = requestAnimationFrame(draw);
-  }
+    }
+    if (!reduced) raf = requestAnimationFrame(draw);
+  };
 
+  init();
   resize();
-  seed();
-  if (!reduced) draw();
-  else draw();
-
-  window.addEventListener('resize', () => { resize(); seed(); });
-  return () => cancelAnimationFrame(animationId);
+  draw();
+  window.addEventListener('resize', resize);
+  return () => {
+    cancelAnimationFrame(raf);
+    window.removeEventListener('resize', resize);
+  };
 }

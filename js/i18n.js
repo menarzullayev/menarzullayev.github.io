@@ -1,4 +1,4 @@
-const STRINGS = {
+export const STRINGS = {
   en: {
     'hero.eyebrow': 'Portfolio Hub',
     'hero.title': 'Interactive Experiments',
@@ -16,72 +16,62 @@ const STRINGS = {
     'card.demo': 'Live demo',
     'card.repo': 'Source',
     'card.soon': 'Coming soon',
+    'noResults.title': 'No matches',
+    'noResults.body': 'Try a different search term or clear the filters.',
+    'noResults.clear': 'Clear filters',
+    'footer.text': '© 2026 Saidakbar Narzullayev',
+    'results': 'projects',
   },
   uz: {
     'hero.eyebrow': 'Portfolio markazi',
     'hero.title': 'Interaktiv tajribalar',
-    'hero.lead': 'CSS, 3D va motion demolar to‘plami — avval localda test, keyin publish.',
+    'hero.lead': 'CSS, 3D va motion demolarning o‘sib borayotgan to‘plami — avval mahalliy sinovdan o‘tkaziladi, tayyor bo‘lganda chop etiladi.',
     'stats.projects': 'Loyihalar',
-    'stats.live': 'Live',
+    'stats.live': 'Jonli',
     'stats.goal': 'Maqsad',
     'search.placeholder': 'Loyihalarni qidirish…',
-    'filter.allCategories': 'Barcha kategoriyalar',
+    'filter.allCategories': 'Barcha turkumlar',
     'filter.allTags': 'Barcha teglar',
     'empty.eyebrow': 'Tez orada',
-    'empty.title': 'Hali loyiha publish qilinmagan',
-    'empty.text': 'Demolar avval localda tayyorlanadi va test qilinadi. Tayyor bo‘lgach, shu yerda chiqadi.',
-    'empty.hint': 'Har demo OK bo‘lgach projects.json ga qo‘shing.',
-    'card.demo': 'Live demo',
+    'empty.title': 'Hali loyihalar chop etilmagan',
+    'empty.text': 'Demolar avval mahalliy yaratilib sinovdan o‘tkaziladi. Tayyor bo‘lganda bu yerda avtomatik paydo bo‘ladi.',
+    'empty.hint': 'Har bir demo mahalliy sinovdan o‘tgach, projects.json fayliga yozuv qo‘shing.',
+    'card.demo': 'Jonli demo',
     'card.repo': 'Manba',
     'card.soon': 'Tez orada',
+    'noResults.title': 'Mos kelmadi',
+    'noResults.body': 'Boshqa so‘z bilan qidiring yoki filtrlarni tozalang.',
+    'noResults.clear': 'Filtrlarni tozalash',
+    'footer.text': '© 2026 Saidakbar Narzullayev',
+    'results': 'loyiha',
   },
   ru: {
     'hero.eyebrow': 'Портфолио-хаб',
     'hero.title': 'Интерактивные эксперименты',
-    'hero.lead': 'Коллекция CSS, 3D и motion демо — сначала локально, потом публикация.',
+    'hero.lead': 'Растущая коллекция CSS, 3D и motion демо — сначала тестируются локально, публикуются по готовности.',
     'stats.projects': 'Проекты',
-    'stats.live': 'Live',
+    'stats.live': 'Онлайн',
     'stats.goal': 'Цель',
     'search.placeholder': 'Поиск проектов…',
     'filter.allCategories': 'Все категории',
     'filter.allTags': 'Все теги',
     'empty.eyebrow': 'Скоро',
     'empty.title': 'Проекты ещё не опубликованы',
-    'empty.text': 'Демо сначала создаются и тестируются локально. После проверки они появятся здесь.',
-    'empty.hint': 'Добавляйте записи в projects.json после локальной проверки.',
+    'empty.text': 'Демо сначала создаются и тестируются локально. По готовности они появляются здесь автоматически.',
+    'empty.hint': 'Добавляйте записи в projects.json после локальной проверки каждого демо.',
     'card.demo': 'Демо',
-    'card.repo': 'Код',
+    'card.repo': 'Исходник',
     'card.soon': 'Скоро',
+    'noResults.title': 'Ничего не найдено',
+    'noResults.body': 'Попробуйте другой запрос или сбросьте фильтры.',
+    'noResults.clear': 'Сбросить фильтры',
+    'footer.text': '© 2026 Saidakbar Narzullayev',
+    'results': 'проектов',
   },
 };
 
-let currentLang = localStorage.getItem('portfolio-lang') || 'en';
-
-export function t(key) {
-  return STRINGS[currentLang]?.[key] || STRINGS.en[key] || key;
-}
-
-export function setLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem('portfolio-lang', lang);
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach((el) => {
-    const key = el.getAttribute('data-i18n');
-    if (key) el.textContent = t(key);
-  });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (key) el.placeholder = t(key);
-  });
-  document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
-  window.dispatchEvent(new CustomEvent('langchange'));
-}
-
-export function initI18n() {
-  setLanguage(currentLang);
-  document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
-  });
+export function getDescription(project, lang) {
+  if (!project.description) return '';
+  if (typeof project.description === 'string') return project.description;
+  return project.description[lang] || project.description.en || '';
 }
