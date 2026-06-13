@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Saidakbar Narzullayev — Interactive portfolio hub. CSS, WebGL, motion experiments.">
+  <title>Saidakbar Narzullayev · Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <p class="topbar__name">Saidakbar Narzullayev</p>
+      <p class="topbar__user">@menarzullayev</p>
+    </div>
+    <div class="topbar__controls">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="uz">UZ</button>
+        <button type="button" class="lang-btn" data-lang="ru">RU</button>
+      </div>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle theme">◐</button>
+      <a class="icon-btn" href="https://github.com/menarzullayev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <p class="hero__eyebrow" data-i18n="hero.eyebrow">Portfolio Hub</p>
+      <h1 class="hero__title" data-i18n="hero.title">Interactive Experiments</h1>
+      <p class="hero__tagline">Systems Engineer @ TassVision.ai • Automation • Backend • AI</p>
+      <p class="hero__lead" data-i18n="hero.lead">A growing collection of CSS, 3D, and motion demos — tested locally, published when ready.</p>
+      <div class="hero__stats">
+        <div class="stat"><span class="stat__value" id="stat-total">0</span><span class="stat__label" data-i18n="stats.projects">Projects</span></div>
+        <div class="stat"><span class="stat__value" id="stat-live">0</span><span class="stat__label" data-i18n="stats.live">Live</span></div>
+        <div class="stat"><span class="stat__value">100</span><span class="stat__label" data-i18n="stats.goal">Goal</span></div>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <label class="search" for="search-input">
+        <span class="search__icon">⌕</span>
+        <input id="search-input" type="search" data-i18n-placeholder="search.placeholder" placeholder="Search projects…" autocomplete="off">
+      </label>
+      <div class="filters">
+        <select id="category-filter" aria-label="Category filter">
+          <option value="all" data-i18n="filter.allCategories">All categories</option>
+        </select>
+        <select id="tag-filter" aria-label="Tag filter">
+          <option value="all" data-i18n="filter.allTags">All tags</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="grid" id="project-grid" aria-live="polite"></section>
+
+    <section class="empty" id="empty-state">
+      <div class="empty__card">
+        <p class="empty__eyebrow" data-i18n="empty.eyebrow">Coming soon</p>
+        <h2 class="empty__title" data-i18n="empty.title">No projects published yet</h2>
+        <p class="empty__text" data-i18n="empty.text">Demos are built and tested locally first. When ready, they appear here automatically.</p>
+        <p class="empty__hint" data-i18n="empty.hint">Add entries to <code>projects.json</code> after each demo passes local review.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Saidakbar Narzullayev · <a href="https://github.com/menarzullayev">GitHub</a></p>
+  </footer>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
