@@ -4,6 +4,7 @@ import { initParticles } from './particles.js';
 const state = {
   lang: localStorage.getItem('portfolio-lang') || 'en',
   theme: localStorage.getItem('portfolio-theme') || 'dark',
+  populated: localStorage.getItem('portfolio-populated') !== 'false',
   projects: [],
   query: '',
   category: 'all',
@@ -29,6 +30,9 @@ function applyI18n() {
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === state.lang);
   });
+  document.querySelectorAll('.view-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.view === (state.populated ? 'populated' : 'empty'));
+  });
 }
 
 function setTheme(theme) {
@@ -42,6 +46,14 @@ function setLang(lang) {
   localStorage.setItem('portfolio-lang', lang);
   applyI18n();
   populateFilters();
+  render();
+}
+
+function setPopulated(populated) {
+  state.populated = populated;
+  localStorage.setItem('portfolio-populated', String(populated));
+  applyI18n();
+  updateStats();
   render();
 }
 
@@ -84,23 +96,23 @@ function populateFilters() {
 }
 
 function updateStats() {
-  const live = state.projects.filter((p) => p.status === 'live' && p.demo).length;
-  els.statTotal.textContent = String(state.projects.length);
-  els.statLive.textContent = String(live);
+  const count = state.populated ? state.projects.length : 0;
+  els.statTotal.textContent = String(count);
+  els.statLive.textContent = String(count);
 }
 
 function render() {
   const items = filteredProjects();
-  const hasProjects = state.projects.length > 0;
   const hasFilters = state.query || state.category !== 'all' || state.tag !== 'all';
 
-  els.emptyState.hidden = hasProjects;
-  els.projectGrid.hidden = !hasProjects || items.length === 0;
-  els.noResults.hidden = !hasProjects || items.length > 0;
-  els.resultsLabel.hidden = !hasProjects;
+  els.emptyState.hidden = state.populated;
+  els.projectGrid.hidden = !state.populated || items.length === 0;
+  els.noResults.hidden = !state.populated || items.length > 0;
+  els.resultsLabel.hidden = !state.populated || items.length === 0;
 
-  if (!hasProjects) {
+  if (!state.populated) {
     els.projectGrid.innerHTML = '';
+    els.resultsLabel.hidden = true;
     return;
   }
 
@@ -109,22 +121,15 @@ function render() {
     return;
   }
 
-  const label = hasFilters
-    ? `${items.length} / ${state.projects.length} ${t('results')}`
-    : `${items.length} ${t('results')}`;
-  els.resultsLabel.textContent = label;
+  const suffix = hasFilters ? ` / ${state.projects.length}` : '';
+  els.resultsLabel.textContent = `${items.length}${suffix} ${t('results')}`;
 
-  els.projectGrid.innerHTML = items.map((p, index) => {
+  els.projectGrid.innerHTML = items.map((p) => {
     const num = String(state.projects.indexOf(p) + 1).padStart(2, '0');
     const desc = getDescription(p, state.lang);
     const tags = (p.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join('');
-    const live = p.status === 'live' && p.demo;
-    const demoLink = live
-      ? `<a href="${p.demo}" target="_blank" rel="noopener noreferrer">${t('card.demo')} <span class="arrow">→</span></a>`
-      : `<span class="tag">${t('card.soon')}</span>`;
-    const repoLink = p.repo
-      ? `<a class="muted" href="${p.repo}" target="_blank" rel="noopener noreferrer">${t('card.repo')} <span class="arrow">→</span></a>`
-      : '';
+    const demoHref = p.demo || '#';
+    const repoHref = p.repo || 'https://github.com/menarzullayev';
     return `
       <article class="card">
         <div class="card__head">
@@ -134,7 +139,10 @@ function render() {
         <h3 class="card__title">${p.title}</h3>
         <p class="card__desc">${desc}</p>
         <div class="card__tags">${tags}</div>
-        <div class="card__links">${demoLink}${repoLink}</div>
+        <div class="card__links">
+          <a href="${demoHref}"${demoHref !== '#' ? ' target="_blank" rel="noopener noreferrer"' : ''}>${t('card.demo')} <span class="arrow">→</span></a>
+          <a class="muted" href="${repoHref}" target="_blank" rel="noopener noreferrer">${t('card.repo')} <span class="arrow">→</span></a>
+        </div>
       </article>
     `;
   }).join('');
@@ -155,6 +163,9 @@ async function loadProjects() {
 function bindEvents() {
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => setLang(btn.dataset.lang));
+  });
+  document.querySelectorAll('.view-btn').forEach((btn) => {
+    btn.addEventListener('click', () => setPopulated(btn.dataset.view === 'populated'));
   });
   els.themeToggle.addEventListener('click', () => {
     setTheme(state.theme === 'dark' ? 'light' : 'dark');

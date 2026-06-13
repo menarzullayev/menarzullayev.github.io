@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "id": "rotate-text",
+    "title": "3D Rotate Text",
+    "category": "Animation",
+    "tags": ["CSS", "3D"],
+    "status": "live",
+    "description": {
+      "en": "Layered CSS perspective spins a wordmark through 3D space.",
+      "uz": "Qatlamli CSS perspektivasi so'zni 3D fazoda aylantiradi.",
+      "ru": "Слоистая CSS-перспектива вращает надпись в 3D."
+    }
+  },
+  {
+    "id": "rabies-cube",
+    "title": "Rabies Cube",
+    "category": "3D",
+    "tags": ["CSS", "3D", "Animation"],
+    "status": "live",
+    "description": {
+      "en": "A six-faced CSS cube tumbling on a custom easing loop.",
+      "uz": "Maxsus easing tsiklida aylanuvchi olti yoqli CSS kub.",
+      "ru": "Шестигранный CSS-куб на кастомной кривой."
+    }
+  },
+  {
+    "id": "3d-jet",
+    "title": "3D Jet",
+    "category": "WebGL",
+    "tags": ["WebGL", "JavaScript", "3D"],
+    "status": "live",
+    "description": {
+      "en": "Interactive glTF model viewer with orbit controls and HDRI light.",
+      "uz": "Orbit boshqaruvi va HDRI yorug'ligi bilan glTF model ko'ruvchi.",
+      "ru": "Интерактивный glTF-просмотрщик с орбитой и HDRI."
+    }
+  },
+  {
+    "id": "digital-organism",
+    "title": "Digital Organism",
+    "category": "Motion",
+    "tags": ["Canvas", "JavaScript", "Motion"],
+    "status": "live",
+    "description": {
+      "en": "An organic, breathing particle blob driven by simplex noise.",
+      "uz": "Simplex shovqin asosidagi tirik, nafas oluvchi zarrachali shakl.",
+      "ru": "Органичная «дышащая» капля из частиц на simplex-шуме."
+    }
+  },
+  {
+    "id": "data-universe",
+    "title": "Data Universe",
+    "category": "WebGL",
+    "tags": ["WebGL", "GLSL", "3D"],
+    "status": "live",
+    "description": {
+      "en": "Thousands of points forming a navigable particle grid.",
+      "uz": "Minglab nuqtalardan tashkil topgan boshqariladigan zarracha to'ri.",
+      "ru": "Тысячи точек, образующих навигационную сетку частиц."
+    }
+  },
+  {
+    "id": "cinematic-tech",
+    "title": "Cinematic Tech",
+    "category": "3D",
+    "tags": ["WebGL", "JavaScript", "Motion"],
+    "status": "live",
+    "description": {
+      "en": "A slow camera orbit around a procedural tech artifact.",
+      "uz": "Protsedural texno-artefakt atrofida sekin kamera aylanishi.",
+      "ru": "Медленный облёт камеры вокруг процедурного артефакта."
+    }
+  }
+]
