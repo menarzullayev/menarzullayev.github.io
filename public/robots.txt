@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://menarzullayev.github.io/sitemap.xml

@@ -1,0 +1,32 @@
+{
+  "name": "menarzullayev-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Interactive profile site: project graph, live statistics, human and agent views (EN, UZ, RU).",
+  "scripts": {
+    "prepare-data": "node scripts/prepare-data.mjs",
+    "dev": "npm run prepare-data && vite",
+    "build": "npm run prepare-data && tsc --noEmit && vite build && node scripts/build-agent-files.mjs",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.187.0",
+    "@vitejs/plugin-react": "6.2.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.6",
+    "vitest": "5.1.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
