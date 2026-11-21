@@ -1,6 +1,6 @@
 export interface LiveData {
   generated: string;
-  cf: { rating: number; max: number; rank: string; contests: number; history: number[]; asof: string; stale: boolean };
+  cf: { rating: number; max: number; rank: string; contests: number; history: number[]; timeline?: [string, number][]; asof: string; stale: boolean };
   lc: { rating: number; top: string; asof: string; stale: boolean };
   activity: { total: number; months: [string, number][]; asof: string; stale: boolean };
   ci: { label: string; ok: boolean; asof: string; stale?: boolean }[];
@@ -20,6 +20,29 @@ export async function loadLive(): Promise<LiveData | null> {
     if (!res.ok) return null;
     const json: unknown = await res.json();
     return isLiveData(json) ? json : null;
+  } catch {
+    return null;
+  }
+}
+
+export interface Competitions {
+  icpc: { name: string; note: string; entries: { year: number; team: string; url: string }[] };
+  codeforces: { handle: string; url: string };
+  leetcode: { user: string; url: string };
+}
+
+export function isCompetitions(v: unknown): v is Competitions {
+  const c = v as Competitions;
+  return !!c && Array.isArray(c.icpc?.entries) && c.icpc.entries.length > 0 && c.icpc.entries.every((e) => typeof e.year === "number" && typeof e.url === "string" && e.url.startsWith("https://"))
+    && typeof c.codeforces?.url === "string" && typeof c.leetcode?.url === "string";
+}
+
+export async function loadCompetitions(): Promise<Competitions | null> {
+  try {
+    const res = await fetch(`${import.meta.env.BASE_URL}data/competitions.json`, { cache: "no-cache" });
+    if (!res.ok) return null;
+    const json: unknown = await res.json();
+    return isCompetitions(json) ? json : null;
   } catch {
     return null;
   }

@@ -10,7 +10,7 @@ export function publicProjects(projects) {
 }
 
 /** A private project is described but never given a URL; the JSON copy keeps only generic fields. */
-export function toPublicJson({ lang, ui, projects, clusters, timeline, live }) {
+export function toPublicJson({ lang, ui, projects, clusters, timeline, live, competitions }) {
   return {
     name: "Saidakbar Narzullayev",
     role: ui["hero.eyebrow"],
@@ -28,11 +28,12 @@ export function toPublicJson({ lang, ui, projects, clusters, timeline, live }) {
     })),
     timeline: timeline.map((e) => ({ date: e.date, text: pick(e.text, lang) })),
     ci: live ? live.ci.map((c) => ({ repo: c.label, passing: c.ok, asof: c.asof })) : [],
+    record: competitions ? { icpc: competitions.icpc.entries.map((e) => ({ year: e.year, team: e.team, standings: e.url })), codeforces: competitions.codeforces.url, leetcode: competitions.leetcode.url } : null,
     contact: "https://linkedin.com/in/NarzullayevMe",
   };
 }
 
-export function buildMarkdown({ lang, ui, projects, clusters, timeline, live }) {
+export function buildMarkdown({ lang, ui, projects, clusters, timeline, live, competitions }) {
   const L = [];
   L.push(`# Saidakbar Narzullayev`, "", `${ui["hero.eyebrow"]}`, "", `${ui["hero.line1"]} ${ui["hero.line2"]}`, "");
   if (live) {
@@ -49,6 +50,11 @@ export function buildMarkdown({ lang, ui, projects, clusters, timeline, live }) 
       L.push(`- **${name}**, ${ui[`status.${p.status}`]}, since ${p.since}. ${pick(p.summary, lang)} Stack: ${p.stack.join(", ")}.${pick(p.evidence, lang) ? " " + pick(p.evidence, lang) : ""}`);
     }
     L.push("");
+  }
+  if (competitions) {
+    L.push(`## ${ui["record.title"]}`, "");
+    for (const e of competitions.icpc.entries) L.push(`- ${competitions.icpc.name} ${e.year} (${e.team}): ${e.url}`);
+    L.push(`- Codeforces: ${competitions.codeforces.url}`, `- LeetCode: ${competitions.leetcode.url}`, "");
   }
   L.push(`## ${ui["timeline.title"]}`, "");
   for (const e of timeline) L.push(`- ${e.date}: ${pick(e.text, lang)}`);

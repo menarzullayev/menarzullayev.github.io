@@ -4,7 +4,8 @@ import Explorer from "./components/Explorer";
 import Stats from "./components/Stats";
 import Timeline from "./components/Timeline";
 import { LANGS, LANG_LABEL, detectLang, t, type Lang } from "./i18n";
-import { loadLive, type LiveData } from "./live";
+import Record from "./components/Record";
+import { loadCompetitions, loadLive, type Competitions, type LiveData } from "./live";
 
 type Mode = "human" | "agent";
 
@@ -19,8 +20,9 @@ export default function App() {
   const [lang, setLang] = useState<Lang>(() => detectLang(location.search, safeGet("lang"), navigator.language || "en"));
   const [mode, setMode] = useState<Mode>(() => (new URLSearchParams(location.search).get("mode") === "agent" ? "agent" : "human"));
   const [live, setLive] = useState<LiveData | null>(null);
+  const [competitions, setCompetitions] = useState<Competitions | null>(null);
 
-  useEffect(() => { void loadLive().then(setLive); }, []);
+  useEffect(() => { void loadLive().then(setLive); void loadCompetitions().then(setCompetitions); }, []);
   useEffect(() => {
     document.documentElement.lang = lang;
     document.title = t(lang, "meta.title");
@@ -77,11 +79,12 @@ export default function App() {
         </section>
 
         {mode === "agent" ? (
-          <AgentView lang={lang} live={live} />
+          <AgentView lang={lang} live={live} competitions={competitions} />
         ) : (
           <>
             <section aria-labelledby="h-graph"><h2 id="h-graph">{t(lang, "graph.title")}</h2><Explorer lang={lang} /></section>
             <section aria-labelledby="h-stats"><h2 id="h-stats">{t(lang, "stats.title")}</h2><Stats lang={lang} live={live} /></section>
+            <section aria-labelledby="h-record"><h2 id="h-record">{t(lang, "record.title")}</h2><Record lang={lang} live={live} competitions={competitions} /></section>
             <section aria-labelledby="h-time"><h2 id="h-time">{t(lang, "timeline.title")}</h2><Timeline lang={lang} /></section>
           </>
         )}

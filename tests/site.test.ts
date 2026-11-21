@@ -4,11 +4,13 @@ import { clusters, projects, timeline } from "../src/content";
 import { LANGS, detectLang, dictionaries, t } from "../src/i18n";
 import { NO_FILTER, distance, filterIds, layout, HUBS } from "../src/lib/graph";
 import { buildLlms, buildMarkdown, buildSitemap, toPublicJson } from "../src/lib/agent.mjs";
-import { isLiveData, type LiveData } from "../src/live";
-import { looksValid } from "../scripts/prepare-data.mjs";
+import { isCompetitions, isLiveData, type Competitions, type LiveData } from "../src/live";
+import { chartPoints, milestones } from "../src/lib/record";
+import { looksValid, looksValidCompetitions } from "../scripts/prepare-data.mjs";
 
 const live = JSON.parse(readFileSync("public/data/profile-data.json", "utf8")) as LiveData;
-const input = (lang: (typeof LANGS)[number]) => ({ lang, ui: dictionaries[lang], projects, clusters, timeline, live });
+const competitions = JSON.parse(readFileSync("public/data/competitions.json", "utf8")) as Competitions;
+const input = (lang: (typeof LANGS)[number]) => ({ lang, ui: dictionaries[lang], projects, clusters, timeline, live, competitions });
 
 // Names that must never appear anywhere in the published content: private repositories, customers, internal systems.
 const BANNED = [/edge-comnex/i, /cv-alg/i, /tezkino/i, /finos/i, /annotation-studio/i, /sammu/i, /attendance/i, /dualsamkiut/i, /medzamin/i, /comnex/i, /\.env/i, /password/i, /secret/i, /token/i];
@@ -117,6 +119,46 @@ describe("agent views", () => {
   it("sitemap has a URL for every language", () => {
     const s = buildSitemap([...LANGS]);
     for (const l of LANGS) expect(s).toContain(`?lang=${l}`);
+  });
+});
+
+describe("competitive record", () => {
+  const tl: [string, number][] = [["2020-11-15", 361], ["2021-03-01", 1200], ["2025-04-19", 1926], ["2026-04-25", 2013], ["2026-06-01", 1990]];
+  it("finds the first contest, Candidate Master and the peak", () => {
+    const m = milestones(tl);
+    expect(m.first).toEqual(["2020-11-15", 361]);
+    expect(m.cmSince).toEqual(["2025-04-19", 1926]);
+    expect(m.peak).toEqual(["2026-04-25", 2013]);
+    expect(milestones([])).toEqual({ first: null, cmSince: null, peak: null });
+    expect(milestones([["2021-01-01", 1500]]).cmSince).toBeNull();
+  });
+  it("places chart points by date, inside the box, and survives a flat series", () => {
+    const pts = chartPoints(tl, 640, 190);
+    expect(pts.length).toBe(tl.length);
+    for (const p of pts) {
+      expect(p.x).toBeGreaterThanOrEqual(12);
+      expect(p.x).toBeLessThanOrEqual(628);
+      expect(p.y).toBeGreaterThanOrEqual(12);
+      expect(p.y).toBeLessThanOrEqual(178);
+    }
+    const gap = pts[2].x - pts[1].x; // a long time gap must be a long distance
+    expect(gap).toBeGreaterThan(pts[1].x - pts[0].x);
+    expect(chartPoints([["2021-01-01", 1500], ["2021-01-02", 1500]], 100, 100).every((p) => Number.isFinite(p.y))).toBe(true);
+    expect(chartPoints([], 100, 100)).toEqual([]);
+  });
+  it("accepts the real record and rejects broken ones (app and build guards agree)", () => {
+    expect(isCompetitions(competitions)).toBe(true);
+    expect(looksValidCompetitions(competitions)).toBe(true);
+    const broken = [null, {}, { ...competitions, icpc: { ...competitions.icpc, entries: [] } }, { ...competitions, icpc: { ...competitions.icpc, entries: [{ year: 2021, team: "x", url: "http://insecure" }] } }];
+    for (const b of broken) {
+      expect(isCompetitions(b)).toBe(false);
+      expect(looksValidCompetitions(b)).toBe(false);
+    }
+  });
+  it("lists every ICPC standings link in the Markdown and states no placements", () => {
+    const md = buildMarkdown(input("en"));
+    for (const e of competitions.icpc.entries) expect(md).toContain(e.url);
+    expect(md).not.toMatch(/\b(1st|2nd|3rd|place|winner)\b/i);
   });
 });
 

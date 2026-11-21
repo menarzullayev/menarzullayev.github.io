@@ -1,6 +1,6 @@
 import type { Cluster, Project, TimelineEvent } from "../content";
 import type { Lang } from "../i18n";
-import type { LiveData } from "../live";
+import type { Competitions, LiveData } from "../live";
 
 export interface AgentInput {
   lang: Lang;
@@ -9,6 +9,7 @@ export interface AgentInput {
   clusters: Cluster[];
   timeline: TimelineEvent[];
   live: LiveData | null;
+  competitions?: Competitions | null;
 }
 export const SITE: string;
 export function publicProjects(projects: Project[]): Project[];
