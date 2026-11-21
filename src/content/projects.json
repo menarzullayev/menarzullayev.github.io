@@ -1,221 +1,513 @@
 {
   "clusters": [
-    { "id": "edge", "color": "#46f072" },
-    { "id": "platforms", "color": "#ffb000" },
-    { "id": "verify", "color": "#8cffa8" },
-    { "id": "compete", "color": "#ff5f56" },
-    { "id": "creative", "color": "#6fd3ff" }
+    {
+      "id": "edge",
+      "color": "#46f072"
+    },
+    {
+      "id": "platforms",
+      "color": "#ffb000"
+    },
+    {
+      "id": "verify",
+      "color": "#8cffa8"
+    },
+    {
+      "id": "compete",
+      "color": "#ff5f56"
+    },
+    {
+      "id": "creative",
+      "color": "#6fd3ff"
+    }
   ],
   "projects": [
     {
-      "id": "cv25-firmware", "cluster": "edge", "visibility": "private", "status": "live", "since": "2025-09",
-      "name": "CV25 firmware", "stack": ["C++17", "Ambarella CV25", "CMake"],
+      "id": "cv25-firmware",
+      "cluster": "edge",
+      "visibility": "private",
+      "status": "live",
+      "since": "2025-09",
+      "name": "CV25 firmware",
+      "stack": [
+        "C++17",
+        "Ambarella CV25",
+        "CMake"
+      ],
       "summary": {
         "en": "Real-time AI firmware for smart cameras: detection, tracking and line-crossing events. Employer work, private, no public code.",
         "uz": "Aqlli kameralar uchun real vaqtli AI firmware: aniqlash, kuzatuv va chiziqni kesib o'tish hodisalari. Ish joyidagi ish, yopiq, ochiq kod yo'q.",
         "ru": "Прошивка с ИИ реального времени для умных камер: детекция, трекинг и события пересечения линии. Работа у работодателя, закрытый код."
       },
-      "evidence": { "en": "About 1,950 devices live in the 7 days before 2026-11-06.", "uz": "2026-11-06 gacha bo'lgan 7 kunda taxminan 1 950 qurilma jonli.", "ru": "Около 1 950 устройств были активны за 7 дней до 2026-11-06." }
+      "evidence": {
+        "en": "About 1,950 devices live in the 7 days before 2026-11-06.",
+        "uz": "2026-11-06 gacha bo'lgan 7 kunda taxminan 1 950 qurilma jonli.",
+        "ru": "Около 1 950 устройств были активны за 7 дней до 2026-11-06."
+      }
     },
     {
-      "id": "model-conversion", "cluster": "edge", "visibility": "private", "status": "live", "since": "2025-10",
-      "name": "Model conversion", "stack": ["ONNX", "Ambarella CNNGen", "Python"],
+      "id": "model-conversion",
+      "cluster": "edge",
+      "visibility": "private",
+      "status": "live",
+      "since": "2025-10",
+      "name": "Model conversion",
+      "stack": [
+        "ONNX",
+        "Ambarella CNNGen",
+        "Python"
+      ],
       "summary": {
         "en": "Face-recognition models converted to the camera's binary format. Employer work, private.",
         "uz": "Yuzni tanish modellarini kameraning ikkilik formatiga o'tkazish. Ish joyidagi ish, yopiq.",
         "ru": "Конвертация моделей распознавания лиц в бинарный формат камеры. Работа у работодателя, закрытый код."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "fleet-analytics", "cluster": "edge", "visibility": "private", "status": "live", "since": "2025-12",
-      "name": "Fleet analytics", "stack": ["TypeScript", "ClickHouse"],
+      "id": "fleet-analytics",
+      "cluster": "edge",
+      "visibility": "private",
+      "status": "live",
+      "since": "2025-12",
+      "name": "Fleet analytics",
+      "stack": [
+        "TypeScript",
+        "ClickHouse"
+      ],
       "summary": {
         "en": "Telemetry analysis and visualisation for the camera fleet. Employer work, private.",
         "uz": "Kameralar parki uchun telemetriya tahlili va vizualizatsiyasi. Ish joyidagi ish, yopiq.",
         "ru": "Анализ и визуализация телеметрии парка камер. Работа у работодателя, закрытый код."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "rankwant", "cluster": "platforms", "visibility": "public", "status": "dev", "since": "2026-09",
-      "name": "rankwant", "url": "https://github.com/menarzullayev/rankwant", "stack": ["Django", "Next.js", "TypeScript", "Docker"],
+      "id": "rankwant",
+      "cluster": "platforms",
+      "visibility": "public",
+      "status": "dev",
+      "since": "2026-09",
+      "name": "rankwant",
+      "url": "https://github.com/menarzullayev/rankwant",
+      "stack": [
+        "Django",
+        "Next.js",
+        "TypeScript",
+        "Docker"
+      ],
       "summary": {
         "en": "Competitive-programming platform for Uzbekistan with a sandboxed judge. In development.",
         "uz": "O'zbekiston uchun sandbox'li sudyali dasturlash musobaqalari platformasi. Ishlab chiqilmoqda.",
         "ru": "Платформа соревновательного программирования для Узбекистана с изолированной проверкой решений. В разработке."
       },
-      "evidence": { "en": "About 1,000 commits, sole author. Push CI green; the nightly suite is currently failing.", "uz": "Taxminan 1 000 commit, yakka muallif. Push CI yashil; tungi to'plam hozir qizil.", "ru": "Около 1 000 коммитов, один автор. CI на push зелёный; ночной набор сейчас падает." }
+      "evidence": {
+        "en": "About 1,000 commits, sole author. Push CI green.",
+        "uz": "Taxminan 1 000 commit, yakka muallif. Push CI yashil.",
+        "ru": "Около 1 000 коммитов, один автор. CI на push зелёный."
+      }
     },
     {
-      "id": "hisobox", "cluster": "platforms", "visibility": "public", "status": "dev", "since": "2026-10",
-      "name": "hisobox", "url": "https://github.com/menarzullayev/hisobox", "stack": ["Python", "Telegram", "Web"],
+      "id": "hisobox",
+      "cluster": "platforms",
+      "visibility": "public",
+      "status": "dev",
+      "since": "2026-10",
+      "name": "hisobox",
+      "url": "https://github.com/menarzullayev/hisobox",
+      "stack": [
+        "Python",
+        "Telegram",
+        "Web"
+      ],
       "summary": {
         "en": "Credit ledger for mahalla grocery shops, via Telegram and web. In development, not deployed.",
         "uz": "Mahalla do'konlari uchun nasiya daftari: Telegram va veb orqali. Ishlab chiqilmoqda, joylashtirilmagan.",
         "ru": "Кредитная книга для продуктовых магазинов махалли: через Telegram и веб. В разработке, не развёрнута."
       },
-      "evidence": { "en": "CI green on the default branch.", "uz": "Asosiy branch'da CI yashil.", "ru": "CI в основной ветке зелёный." }
+      "evidence": {
+        "en": "CI green on the default branch.",
+        "uz": "Asosiy branch'da CI yashil.",
+        "ru": "CI в основной ветке зелёный."
+      }
     },
     {
-      "id": "tulporgo", "cluster": "platforms", "visibility": "public", "status": "dev", "since": "2026-11",
-      "name": "tulporgo", "url": "https://github.com/menarzullayev/tulporgo", "stack": ["Python", "Telegram Mini App"],
+      "id": "tulporgo",
+      "cluster": "platforms",
+      "visibility": "public",
+      "status": "dev",
+      "since": "2026-11",
+      "name": "tulporgo",
+      "url": "https://github.com/menarzullayev/tulporgo",
+      "stack": [
+        "Python",
+        "Telegram Mini App"
+      ],
       "summary": {
         "en": "Telegram-native taxi service for Uzbekistan: bot, Mini App and driver userbots.",
         "uz": "O'zbekiston uchun Telegram'dagi taksi xizmati: bot, Mini App va haydovchi userbotlari.",
         "ru": "Такси-сервис внутри Telegram для Узбекистана: бот, Mini App и юзерботы водителей."
       },
-      "evidence": { "en": "Code under AGPL-3.0, brand rights reserved.", "uz": "Kod AGPL-3.0 ostida, brend huquqlari saqlangan.", "ru": "Код под AGPL-3.0, права на бренд сохранены." }
+      "evidence": {
+        "en": "Code under AGPL-3.0, brand rights reserved.",
+        "uz": "Kod AGPL-3.0 ostida, brend huquqlari saqlangan.",
+        "ru": "Код под AGPL-3.0, права на бренд сохранены."
+      }
     },
     {
-      "id": "bot-platform", "cluster": "platforms", "visibility": "public", "status": "dev", "since": "2026-11",
-      "name": "bot-platform", "url": "https://github.com/menarzullayev/bot-platform", "stack": ["TypeScript", "grammY", "Cloudflare Workers", "D1"],
+      "id": "bot-platform",
+      "cluster": "platforms",
+      "visibility": "public",
+      "status": "dev",
+      "since": "2026-11",
+      "name": "bot-platform",
+      "url": "https://github.com/menarzullayev/bot-platform",
+      "stack": [
+        "TypeScript",
+        "grammY",
+        "Cloudflare Workers",
+        "D1"
+      ],
       "summary": {
         "en": "Multi-bot Telegram platform on Cloudflare Workers, with a calculator bot as the first tenant.",
         "uz": "Cloudflare Workers ustidagi ko'p botli Telegram platformasi; birinchi bot sifatida kalkulyator.",
         "ru": "Мульти-бот платформа Telegram на Cloudflare Workers; первый бот — калькулятор."
       },
-      "evidence": { "en": "CI and deploy green.", "uz": "CI va deploy yashil.", "ru": "CI и деплой зелёные." }
+      "evidence": {
+        "en": "CI and deploy green.",
+        "uz": "CI va deploy yashil.",
+        "ru": "CI и деплой зелёные."
+      }
     },
     {
-      "id": "silklens", "cluster": "platforms", "visibility": "public", "status": "dev", "since": "2026-05",
-      "name": "silklens", "url": "https://github.com/menarzullayev/silklens", "stack": ["Python", "Flutter", "FastAPI"],
+      "id": "silklens",
+      "cluster": "platforms",
+      "visibility": "public",
+      "status": "dev",
+      "since": "2026-05",
+      "name": "silklens",
+      "url": "https://github.com/menarzullayev/silklens",
+      "stack": [
+        "Python",
+        "Flutter",
+        "FastAPI"
+      ],
       "summary": {
         "en": "AI-powered cultural heritage platform. Early phase.",
         "uz": "Madaniy meros uchun AI platformasi. Dastlabki bosqich.",
         "ru": "Платформа культурного наследия на основе ИИ. Ранняя стадия."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "yuzdanyuz", "cluster": "platforms", "visibility": "public", "status": "dev", "since": "2026-11",
-      "name": "yuzdanyuz-monorepo", "url": "https://github.com/menarzullayev/yuzdanyuz-monorepo", "stack": ["Django", "Next.js", "React Native"],
+      "id": "yuzdanyuz",
+      "cluster": "platforms",
+      "visibility": "public",
+      "status": "dev",
+      "since": "2026-11",
+      "name": "yuzdanyuz-monorepo",
+      "url": "https://github.com/menarzullayev/yuzdanyuz-monorepo",
+      "stack": [
+        "Django",
+        "Next.js",
+        "React Native"
+      ],
       "summary": {
         "en": "Milliy Sertifikat EdTech super-app: exam simulator, AI diagnostics, white-label platform.",
         "uz": "Milliy Sertifikat uchun EdTech super-ilova: imtihon simulyatori, AI diagnostika, white-label platforma.",
         "ru": "EdTech супер-приложение для Milliy Sertifikat: симулятор экзамена, ИИ-диагностика, white-label платформа."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "media-platform", "cluster": "platforms", "visibility": "private", "status": "dev", "since": "2026",
-      "name": "Media platform", "stack": ["Python", "Telegram", "Web"],
+      "id": "media-platform",
+      "cluster": "platforms",
+      "visibility": "private",
+      "status": "dev",
+      "since": "2026",
+      "name": "Media platform",
+      "stack": [
+        "Python",
+        "Telegram",
+        "Web"
+      ],
       "summary": {
         "en": "A media platform with a Telegram bot, Mini App and web client. Private.",
         "uz": "Telegram bot, Mini App va veb mijozli media platforma. Yopiq.",
         "ru": "Медиа-платформа с ботом Telegram, Mini App и веб-клиентом. Закрытый проект."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "agent-verification-study", "cluster": "verify", "visibility": "public", "status": "research", "since": "2026-11",
-      "name": "agent-verification-study", "url": "https://github.com/menarzullayev/agent-verification-study", "stack": ["Python", "pytest"],
+      "id": "agent-verification-study",
+      "cluster": "verify",
+      "visibility": "public",
+      "status": "research",
+      "since": "2026-11",
+      "name": "agent-verification-study",
+      "url": "https://github.com/menarzullayev/agent-verification-study",
+      "stack": [
+        "Python",
+        "pytest"
+      ],
       "summary": {
         "en": "Offline measurement: does a verifier that sees a reply miss more errors than one that does not? Analysis rule fixed in advance.",
         "uz": "Oflayn o'lchov: javobni ko'rgan tekshiruvchi ko'rmaganiga qaraganda ko'proq xato o'tkazib yuboradimi? Tahlil qoidasi oldindan belgilangan.",
         "ru": "Офлайн-измерение: пропускает ли проверяющий, видевший ответ, больше ошибок, чем не видевший? Правило анализа зафиксировано заранее."
       },
-      "evidence": { "en": "36 of 36 injected errors caught; the hypothesis was not supported; the blind comparison failed its own validity gate. n = 12 per cell.", "uz": "36 ta kiritilgan xatodan 36 tasi topildi; gipoteza tasdiqlanmadi; ko'r taqqoslash o'z yaroqlilik mezonidan o'tmadi. Har katakda n = 12.", "ru": "Поймано 36 из 36 внесённых ошибок; гипотеза не подтвердилась; слепое сравнение не прошло собственный критерий валидности. n = 12 на ячейку." }
+      "evidence": {
+        "en": "36 of 36 injected errors caught; the hypothesis was not supported; the blind comparison failed its own validity gate. n = 12 per cell.",
+        "uz": "36 ta kiritilgan xatodan 36 tasi topildi; gipoteza tasdiqlanmadi; ko'r taqqoslash o'z yaroqlilik mezonidan o'tmadi. Har katakda n = 12.",
+        "ru": "Поймано 36 из 36 внесённых ошибок; гипотеза не подтвердилась; слепое сравнение не прошло собственный критерий валидности. n = 12 на ячейку."
+      }
     },
     {
-      "id": "project-alpha", "cluster": "verify", "visibility": "public", "status": "done", "since": "2026-07",
-      "name": "project-alpha", "url": "https://github.com/menarzullayev/project-alpha", "stack": ["TypeScript", "Python", "GitHub Actions"],
+      "id": "project-alpha",
+      "cluster": "verify",
+      "visibility": "public",
+      "status": "done",
+      "since": "2026-07",
+      "name": "project-alpha",
+      "url": "https://github.com/menarzullayev/project-alpha",
+      "stack": [
+        "TypeScript",
+        "Python",
+        "GitHub Actions"
+      ],
       "summary": {
         "en": "Documentation OS: ten stages from a product idea to production-ready documents, with human approval and evidence-backed claims.",
         "uz": "Documentation OS: mahsulot g'oyasidan ishlab chiqarishga tayyor hujjatlargacha o'n bosqich, inson tasdig'i va dalilga asoslangan da'volar bilan.",
         "ru": "Documentation OS: десять этапов от идеи продукта до готовой документации, с одобрением человека и подтверждёнными утверждениями."
       },
-      "evidence": { "en": "CI green.", "uz": "CI yashil.", "ru": "CI зелёный." }
+      "evidence": {
+        "en": "CI green.",
+        "uz": "CI yashil.",
+        "ru": "CI зелёный."
+      }
     },
     {
-      "id": "engineering-portfolio", "cluster": "verify", "visibility": "public", "status": "done", "since": "2026-11",
-      "name": "engineering-portfolio", "url": "https://github.com/menarzullayev/engineering-portfolio", "stack": ["Markdown", "SVG"],
+      "id": "engineering-portfolio",
+      "cluster": "verify",
+      "visibility": "public",
+      "status": "done",
+      "since": "2026-11",
+      "name": "engineering-portfolio",
+      "url": "https://github.com/menarzullayev/engineering-portfolio",
+      "stack": [
+        "Markdown",
+        "SVG"
+      ],
       "summary": {
         "en": "Four systems explained as decisions, measurements and what is not done.",
         "uz": "To'rtta tizim qarorlar, o'lchovlar va bajarilmagan ishlar sifatida tushuntirilgan.",
         "ru": "Четыре системы, описанные через решения, измерения и то, что не сделано."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "tg-solver", "cluster": "verify", "visibility": "private", "status": "live", "since": "2026",
-      "name": "tg-solver", "stack": ["Python", "Telegram"],
+      "id": "tg-solver",
+      "cluster": "verify",
+      "visibility": "private",
+      "status": "live",
+      "since": "2026",
+      "name": "tg-solver",
+      "stack": [
+        "Python",
+        "Telegram"
+      ],
       "summary": {
         "en": "A personal experiment: a Telegram group watcher that posts verified solutions automatically. Private; its measurement is public.",
         "uz": "Shaxsiy tajriba: Telegram guruhini kuzatib, tekshirilgan yechimlarni avtomatik yuboradi. Yopiq; o'lchovi ochiq.",
         "ru": "Личный эксперимент: наблюдатель Telegram-группы, автоматически присылающий проверенные решения. Закрытый; измерение открыто."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "cpstands", "cluster": "compete", "visibility": "public", "status": "dev", "since": "2026-11",
-      "name": "cpstands", "url": "https://github.com/menarzullayev/cpstands", "stack": ["Python", "Telegram"],
+      "id": "cpstands",
+      "cluster": "compete",
+      "visibility": "public",
+      "status": "dev",
+      "since": "2026-11",
+      "name": "cpstands",
+      "url": "https://github.com/menarzullayev/cpstands",
+      "stack": [
+        "Python",
+        "Telegram"
+      ],
       "summary": {
         "en": "Live contest tracker for Telegram: standings, reminders and notifications for Codeforces and kep.uz.",
         "uz": "Telegram uchun jonli musobaqa kuzatuvchisi: Codeforces va kep.uz bo'yicha reyting, eslatma va bildirishnomalar.",
         "ru": "Трекер соревнований для Telegram: таблицы, напоминания и уведомления по Codeforces и kep.uz."
       },
-      "evidence": { "en": "Apache-2.0.", "uz": "Apache-2.0.", "ru": "Apache-2.0." }
+      "evidence": {
+        "en": "Apache-2.0.",
+        "uz": "Apache-2.0.",
+        "ru": "Apache-2.0."
+      }
     },
     {
-      "id": "icpc", "cluster": "compete", "visibility": "public", "status": "done", "since": "2021",
-      "name": "ICPC NERC", "url": "https://nerc.itmo.ru/archive/2023/standings.html", "stack": ["C++"],
+      "id": "icpc",
+      "cluster": "compete",
+      "visibility": "public",
+      "status": "done",
+      "since": "2021",
+      "name": "ICPC NERC",
+      "url": "https://nerc.itmo.ru/archive/2023/standings.html",
+      "stack": [
+        "C++"
+      ],
       "summary": {
         "en": "Northern Eurasia Finals three times: 2021, 2022 and 2023.",
         "uz": "Shimoliy Yevrosiyo finallari uch marta: 2021, 2022 va 2023.",
         "ru": "Финалы Северной Евразии три раза: 2021, 2022 и 2023."
       },
-      "evidence": { "en": "Official standings are linked.", "uz": "Rasmiy natijalarga havola berilgan.", "ru": "Даны ссылки на официальные результаты." }
+      "evidence": {
+        "en": "Official standings are linked.",
+        "uz": "Rasmiy natijalarga havola berilgan.",
+        "ru": "Даны ссылки на официальные результаты."
+      }
     },
     {
-      "id": "codeforces", "cluster": "compete", "visibility": "public", "status": "live", "since": "2020",
-      "name": "Codeforces", "url": "https://codeforces.com/profile/meNarzullayev", "stack": ["C++"],
+      "id": "codeforces",
+      "cluster": "compete",
+      "visibility": "public",
+      "status": "live",
+      "since": "2020",
+      "name": "Codeforces",
+      "url": "https://codeforces.com/profile/meNarzullayev",
+      "stack": [
+        "C++"
+      ],
       "summary": {
         "en": "Candidate Master. Live rating on the statistics panel.",
         "uz": "Candidate Master. Jonli reyting statistika panelida.",
         "ru": "Candidate Master. Актуальный рейтинг на панели статистики."
       },
-      "evidence": { "en": "Rating 2013, 93 rated contests.", "uz": "Reyting 2013, 93 ta reytingli musobaqa.", "ru": "Рейтинг 2013, 93 рейтинговых соревнования." }
+      "evidence": {
+        "en": "Rating 2013, 93 rated contests.",
+        "uz": "Reyting 2013, 93 ta reytingli musobaqa.",
+        "ru": "Рейтинг 2013, 93 рейтинговых соревнования."
+      }
     },
     {
-      "id": "leetcode", "cluster": "compete", "visibility": "public", "status": "live", "since": "2020",
-      "name": "LeetCode", "url": "https://leetcode.com/u/NarzullayevMe/", "stack": ["Python", "C++"],
+      "id": "leetcode",
+      "cluster": "compete",
+      "visibility": "public",
+      "status": "live",
+      "since": "2020",
+      "name": "LeetCode",
+      "url": "https://leetcode.com/u/NarzullayevMe/",
+      "stack": [
+        "Python",
+        "C++"
+      ],
       "summary": {
         "en": "Contest rating 2281, top 0.6 percent.",
         "uz": "Musobaqa reytingi 2281, eng yaxshi 0.6 foiz.",
         "ru": "Рейтинг соревнований 2281, топ 0.6 процента."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "eiffel-1887", "cluster": "creative", "visibility": "public", "status": "done", "since": "2026-11",
-      "name": "eiffel-1887", "url": "https://github.com/menarzullayev/eiffel-1887", "stack": ["Three.js", "HTML"],
+      "id": "eiffel-1887",
+      "cluster": "creative",
+      "visibility": "public",
+      "status": "done",
+      "since": "2026-11",
+      "name": "eiffel-1887",
+      "url": "https://github.com/menarzullayev/eiffel-1887",
+      "stack": [
+        "Three.js",
+        "HTML"
+      ],
       "summary": {
         "en": "Interactive Three.js exhibit of the Eiffel Tower's construction, 1887 to 1889.",
         "uz": "Eyfel minorasi qurilishining (1887-1889) interaktiv Three.js ko'rgazmasi.",
         "ru": "Интерактивная выставка Three.js о строительстве Эйфелевой башни, 1887-1889."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "zumrad-arxipelag", "cluster": "creative", "visibility": "public", "status": "done", "since": "2026-11",
-      "name": "zumrad-arxipelag", "url": "https://github.com/menarzullayev/zumrad-arxipelag", "stack": ["Three.js", "WebGL2"],
+      "id": "zumrad-arxipelag",
+      "cluster": "creative",
+      "visibility": "public",
+      "status": "done",
+      "since": "2026-11",
+      "name": "zumrad-arxipelag",
+      "url": "https://github.com/menarzullayev/zumrad-arxipelag",
+      "stack": [
+        "Three.js",
+        "WebGL2"
+      ],
       "summary": {
         "en": "Real-time tropical archipelago: Gerstner waves, refraction and caustics.",
         "uz": "Real vaqtli tropik arxipelag: Gerstner to'lqinlari, sinish va kaustika.",
         "ru": "Тропический архипелаг в реальном времени: волны Герстнера, преломление и каустика."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     },
     {
-      "id": "3d-characters", "cluster": "creative", "visibility": "public", "status": "done", "since": "2026-06",
-      "name": "3D-Characters", "url": "https://github.com/menarzullayev/3D-Characters", "stack": ["JavaScript", "model-viewer"],
+      "id": "3d-characters",
+      "cluster": "creative",
+      "visibility": "public",
+      "status": "done",
+      "since": "2026-06",
+      "name": "3D-Characters",
+      "url": "https://github.com/menarzullayev/3D-Characters",
+      "stack": [
+        "JavaScript",
+        "model-viewer"
+      ],
       "summary": {
         "en": "Interactive 3D character viewer with animated models.",
         "uz": "Animatsiyali modellar bilan interaktiv 3D personaj ko'rgazmasi.",
         "ru": "Интерактивный просмотр 3D-персонажей с анимированными моделями."
       },
-      "evidence": { "en": "", "uz": "", "ru": "" }
+      "evidence": {
+        "en": "",
+        "uz": "",
+        "ru": ""
+      }
     }
   ]
 }
