@@ -1,0 +1,15 @@
+{
+  "events": [
+    { "date": "2020-11", "kind": "compete", "text": { "en": "First rated Codeforces contest.", "uz": "Codeforces'da birinchi reytingli musobaqa.", "ru": "Первое рейтинговое соревнование на Codeforces." } },
+    { "date": "2021", "kind": "compete", "text": { "en": "ICPC Northern Eurasia Finals, first of three.", "uz": "ICPC Shimoliy Yevrosiyo finali, uchtadan birinchisi.", "ru": "Финал ICPC Северной Евразии, первый из трёх." } },
+    { "date": "2022", "kind": "compete", "text": { "en": "ICPC Northern Eurasia Finals.", "uz": "ICPC Shimoliy Yevrosiyo finali.", "ru": "Финал ICPC Северной Евразии." } },
+    { "date": "2023", "kind": "compete", "text": { "en": "ICPC Northern Eurasia Finals.", "uz": "ICPC Shimoliy Yevrosiyo finali.", "ru": "Финал ICPC Северной Евразии." } },
+    { "date": "2024", "kind": "study", "text": { "en": "Finished the BSc degree.", "uz": "Bakalavr darajasini tugatdi.", "ru": "Окончил бакалавриат." } },
+    { "date": "2025-04", "kind": "compete", "text": { "en": "Reached Codeforces Candidate Master.", "uz": "Codeforces'da Candidate Master darajasiga chiqdi.", "ru": "Достиг уровня Candidate Master на Codeforces." } },
+    { "date": "2025-09", "kind": "work", "text": { "en": "Joined the firmware and AI models team as an intern.", "uz": "Firmware va AI modellari jamoasiga stajyor sifatida qo'shildi.", "ru": "Пришёл в команду прошивок и ИИ-моделей стажёром." } },
+    { "date": "2025-12", "kind": "work", "text": { "en": "Became an engineer on the same team.", "uz": "O'sha jamoada muhandis bo'ldi.", "ru": "Стал инженером в той же команде." } },
+    { "date": "2026-05", "kind": "build", "text": { "en": "SilkLens published.", "uz": "SilkLens e'lon qilindi.", "ru": "Опубликован SilkLens." } },
+    { "date": "2026-09", "kind": "build", "text": { "en": "rankwant published; about a thousand commits by now.", "uz": "rankwant e'lon qilindi; hozirgacha taxminan ming commit.", "ru": "Опубликован rankwant; сейчас около тысячи коммитов." } },
+    { "date": "2026-11", "kind": "research", "text": { "en": "First public measurement on agent verification.", "uz": "Agent tekshiruvi bo'yicha birinchi ochiq o'lchov.", "ru": "Первое открытое измерение по верификации агентов." } }
+  ]
+}
