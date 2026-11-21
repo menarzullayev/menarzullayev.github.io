@@ -12,10 +12,11 @@ const langs = ["en", "uz", "ru"];
 const projectsFile = read("src/content/projects.json");
 const timeline = read("src/content/timeline.json").events.slice().sort((a, b) => a.date.localeCompare(b.date));
 const live = read("public/data/profile-data.json");
+const competitions = read("public/data/competitions.json");
 
 for (const lang of langs) {
   const ui = read(`src/content/ui.${lang}.json`);
-  const input = { lang, ui, projects: projectsFile.projects, clusters: projectsFile.clusters, timeline, live };
+  const input = { lang, ui, projects: projectsFile.projects, clusters: projectsFile.clusters, timeline, live, competitions };
   const suffix = lang === "en" ? "" : `.${lang}`;
   out(`index${suffix}.md`, buildMarkdown(input));
   out(`data${suffix}.json`, JSON.stringify(toPublicJson(input), null, 2) + "\n");

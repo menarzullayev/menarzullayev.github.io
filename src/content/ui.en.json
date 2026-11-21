@@ -60,5 +60,14 @@
   "footer.built": "Built from public data; rebuilt daily. Private repositories are not counted.",
   "footer.source": "Source",
   "footer.archive": "Archive of the earlier demo hub",
-  "footer.translations": "Uzbek and Russian texts are machine-assisted drafts; the English text is the reference."
+  "footer.translations": "Uzbek and Russian texts are machine-assisted drafts; the English text is the reference.",
+  "record.title": "Competitive record",
+  "record.icpc": "ICPC Northern Eurasia Finals",
+  "record.icpc.note": "Official team standings pages; places are not stated here.",
+  "record.standings": "standings",
+  "record.cf": "Codeforces rating history",
+  "record.nohistory": "The dated history is not available yet.",
+  "record.first": "First rated contest: {date}",
+  "record.cm": "Candidate Master (1900 or more) since {date}, rating {rating}",
+  "record.peak": "Peak rating {rating}, {date}"
 }

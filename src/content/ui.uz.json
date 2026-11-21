@@ -60,5 +60,14 @@
   "footer.built": "Ochiq ma'lumotdan qurilgan; har kuni qayta quriladi. Yopiq repozitoriylar hisobga olinmaydi.",
   "footer.source": "Manba",
   "footer.archive": "Oldingi demo hub arxivi",
-  "footer.translations": "O'zbekcha va ruscha matnlar mashina yordamidagi qoralama; inglizcha matn asosiy hisoblanadi."
+  "footer.translations": "O'zbekcha va ruscha matnlar mashina yordamidagi qoralama; inglizcha matn asosiy hisoblanadi.",
+  "record.title": "Musobaqa yozuvi",
+  "record.icpc": "ICPC Shimoliy Yevrosiyo finali",
+  "record.icpc.note": "Rasmiy jamoa natijalari sahifalari; o‘rinlar bu yerda ko‘rsatilmagan.",
+  "record.standings": "natijalar",
+  "record.cf": "Codeforces reyting tarixi",
+  "record.nohistory": "Sanali tarix hali mavjud emas.",
+  "record.first": "Birinchi reytingli musobaqa: {date}",
+  "record.cm": "Candidate Master (1900 va undan yuqori) {date} dan, reyting {rating}",
+  "record.peak": "Eng yuqori reyting {rating}, {date}"
 }

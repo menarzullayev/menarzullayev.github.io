@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
 import { clusters, projects, timeline } from "../content";
 import { dictionaries, t, type Lang } from "../i18n";
-import type { LiveData } from "../live";
+import type { Competitions, LiveData } from "../live";
 import { buildMarkdown } from "../lib/agent.mjs";
 
 const FILES = ["/index.md", "/llms.txt", "/data.json", "/sitemap.xml"];
 
-export default function AgentView({ lang, live }: { lang: Lang; live: LiveData | null }) {
+export default function AgentView({ lang, live, competitions }: { lang: Lang; live: LiveData | null; competitions: Competitions | null }) {
   const [copied, setCopied] = useState(false);
-  const md = useMemo(() => buildMarkdown({ lang, ui: dictionaries[lang], projects, clusters, timeline, live }), [lang, live]);
+  const md = useMemo(() => buildMarkdown({ lang, ui: dictionaries[lang], projects, clusters, timeline, live, competitions }), [lang, live, competitions]);
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(md);
