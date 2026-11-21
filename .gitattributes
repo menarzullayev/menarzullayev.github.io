@@ -1,2 +1,5 @@
 * text=auto eol=lf
 *.woff binary
+# the archived demo hub and generated data should not decide the repository language shown on the profile
+archive/** linguist-vendored
+public/data/*.json linguist-generated
